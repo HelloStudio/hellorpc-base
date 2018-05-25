@@ -2,15 +2,20 @@ package com.github.hellorpc.logger;
 
 /**
  * 通用日志接口（具体的日志实现类，在应用层来传入，以兼容所有主流的日志框架）
+ * 此接口的实现类，一定要有一个无参构造方法
  *
  * @author George (GeorgeWorld@qq.com)
  **/
 public interface GeorgeLogger {
     public static final String ROOT_LOGGER_NAME = "ROOT";
 
-    public GeorgeLogger getInstance();
-
-    public void bindingClass(Class<?> clazz);
+    /**
+     * 使用给定的Class作为Logger构造函数，构造一个具体的Logger对象（slf4j或者apache commons logging
+     *
+     * @param clazz 当前在哪个类里面打印日志
+     * @return logger日志实例，如slf4j log或者commons logging
+     */
+    public Object bindingClassInitLogger(Class<?> clazz);
 
     public boolean isTraceEnabled();
 

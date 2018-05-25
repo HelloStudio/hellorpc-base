@@ -1,5 +1,6 @@
 package com.github.hellorpc.logger;
 
+import java.util.Iterator;
 import java.util.ServiceLoader;
 
 /**
@@ -15,14 +16,19 @@ public final class GeorgeLoggerFactory {
         synchronized (GeorgeLogger.class) {
             //使用SPI机制，扫描META-INF/services包，寻找日志实现类
             ServiceLoader<GeorgeLogger> loggerServices = ServiceLoader.load(GeorgeLogger.class);
-            for (GeorgeLogger logger : loggerServices) {
-                //让logger实现类自己提供自己的实例，避免使用logger.getClass().newInstance()这种反射方式来实例化
-                LOGGER = logger.getInstance();
+            Iterator<GeorgeLogger> iterator = loggerServices.iterator();
+            while (iterator.hasNext()) {
+                LOGGER = iterator.next();
             }
+
+            //for (GeorgeLogger logger : loggerServices) {
+            //让logger实现类自己提供自己的实例，避免使用logger.getClass().newInstance()这种反射方式来实例化
+            //    LOGGER = logger.getInstance();
+            //}
 
             if (LOGGER == null) {
                 LOGGER = new SystemLogProxy();
-                LOGGER.bindingClass(GeorgeLoggerFactory.class);
+                LOGGER.bindingClassInitLogger(GeorgeLoggerFactory.class);
 
                 LOGGER.error("### Logger instance not found in META-INF/services.");
             }
@@ -30,7 +36,7 @@ public final class GeorgeLoggerFactory {
     }
 
     public static GeorgeLogger getLogger(Class<?> clazz) {
-        LOGGER.bindingClass(clazz);
+        LOGGER.bindingClassInitLogger(clazz);
         return LOGGER;
     }
 

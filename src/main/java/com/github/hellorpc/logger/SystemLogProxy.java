@@ -13,20 +13,12 @@ public class SystemLogProxy implements GeorgeLogger {
     public SystemLogProxy() {
     }
 
-    public SystemLogProxy(String className) {
-        this.className = className;
-    }
-
-
     @Override
-    public GeorgeLogger getInstance() {
-        return new SystemLogProxy();
-    }
-
-    @Override
-    public void bindingClass(Class<?> clazz) {
+    public Object bindingClassInitLogger(Class<?> clazz) {
         this.clazz = clazz;
         this.className = clazz.getName();
+
+        return "System";
     }
 
     public boolean isTraceEnabled() {
