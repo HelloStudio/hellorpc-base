@@ -2,9 +2,15 @@ package com.github.hellorpc.logger;
 
 /**
  * 通用日志接口（具体的日志实现类，在应用层来传入，以兼容所有主流的日志框架）
+ *
+ * @author George (GeorgeWorld@qq.com)
  **/
 public interface GeorgeLogger {
     public static final String ROOT_LOGGER_NAME = "ROOT";
+
+    public GeorgeLogger getInstance();
+
+    public void bindingClass(Class<?> clazz);
 
     public boolean isTraceEnabled();
 
