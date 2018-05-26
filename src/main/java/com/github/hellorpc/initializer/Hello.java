@@ -22,7 +22,7 @@ public class Hello {
             LOG.debug("--- Initialize the DI environment BEGIN... ---");
             ApplicationContext context = BAC
                     .annotation()
-                    .setBeanPackPath(new String[]{"hello.service.impl"})//扫描这个包下面的所有服务类
+                    .setBeanPackPath(new String[]{"/"})//扫描整个项目
                     .build();
 
             //开始注册内置服务对象
