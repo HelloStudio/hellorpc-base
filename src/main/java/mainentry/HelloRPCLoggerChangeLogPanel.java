@@ -10,8 +10,8 @@
  */
 package mainentry;
 
-import hellorpc.annotation.HelloRPCBaseCommentItem;
-import hellorpc.annotation.HelloRPCBaseComments;
+import hellorpc.annotation.HelloRPCLoggerCommentItem;
+import hellorpc.annotation.HelloRPCLoggerComments;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -23,12 +23,12 @@ import javax.swing.table.TableColumn;
  *
  * @author George <GeorgeNiceWorld@gmail.com>
  */
-public class HelloRPCBaseChangeLogPanel extends javax.swing.JPanel {
+public class HelloRPCLoggerChangeLogPanel extends javax.swing.JPanel {
 
     private Class<?> clazz;
 
     /** Creates new form ChangeLogPanel */
-    public HelloRPCBaseChangeLogPanel(Class<?> clazz) {
+    public HelloRPCLoggerChangeLogPanel(Class<?> clazz) {
         this.clazz = clazz;
         initComponents();
         initTable();
@@ -60,11 +60,11 @@ public class HelloRPCBaseChangeLogPanel extends javax.swing.JPanel {
         model.addColumn("版本");
         model.addColumn("记录内容");
 
-        HelloRPCBaseComments commentsAnnotation = clazz.getAnnotation(HelloRPCBaseComments.class);
+        HelloRPCLoggerComments commentsAnnotation = clazz.getAnnotation(HelloRPCLoggerComments.class);
         if (commentsAnnotation != null) {
-            HelloRPCBaseCommentItem[] commentItems = commentsAnnotation.value();
+            HelloRPCLoggerCommentItem[] commentItems = commentsAnnotation.value();
             if (commentItems != null) {
-                for (HelloRPCBaseCommentItem item : commentItems) {
+                for (HelloRPCLoggerCommentItem item : commentItems) {
                     StringBuffer content = new StringBuffer();
                     String[] notes = item.notes();
                     for (String note : notes) {

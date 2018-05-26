@@ -5,18 +5,16 @@
 package hellorpc.annotation;
 
 import java.lang.annotation.*;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  *
  * @author George <GeorgeNiceWorld@gmail.com>
  */
-@Retention(value = RetentionPolicy.RUNTIME)
-@Target(value = {ElementType.TYPE})
-public @interface HelloRPCBaseCommentItem {
+@Target({TYPE, FIELD, METHOD})
+@Retention(RUNTIME)
+public @interface HelloRPCLoggerComments {
 
-    public String dateTime();
-
-    public String version();
-
-    public String[] notes() default {""};
+    public HelloRPCLoggerCommentItem[] value();
 }

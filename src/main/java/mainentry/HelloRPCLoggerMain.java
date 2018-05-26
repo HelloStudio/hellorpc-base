@@ -17,23 +17,23 @@ import java.net.URISyntaxException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import hellorpc.annotation.HelloRPCBaseCommentItem;
-import hellorpc.annotation.HelloRPCBaseComments;
+import hellorpc.annotation.HelloRPCLoggerCommentItem;
+import hellorpc.annotation.HelloRPCLoggerComments;
 
 /**
  * @author George (GeorgeWorld@qq.com)
  * @contact https://www.georgeinfo.com
  * @since 2015-07-07
  */
-@HelloRPCBaseComments({
-        @HelloRPCBaseCommentItem(dateTime = "2015-11-16 17:09", version = "v0.0.1", notes = {"创建本项目，完成通讯协议设计，完成报文格式解析相关工具类的开发。"})
+@HelloRPCLoggerComments({
+        @HelloRPCLoggerCommentItem(dateTime = "2015-11-16 17:09", version = "v0.0.1", notes = {"创建本项目，完成通讯协议设计，完成报文格式解析相关工具类的开发。"})
 })
-public class HelloRPCBaseMain {
+public class HelloRPCLoggerMain {
 
     public static final String VERSION = "v0.0.1";
     public static final String UPDATE_DATE_TIME = "2015-11-16 17:09";
 
-    public HelloRPCBaseMain() {
+    public HelloRPCLoggerMain() {
     }
 
     /**
@@ -42,11 +42,11 @@ public class HelloRPCBaseMain {
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame();
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setTitle("Hello RPC Logger Proxy For Slf4j");
+        mainFrame.setTitle("Hello RPC Logger");
         mainFrame.setSize(599, 300);
         mainFrame.setLayout(new java.awt.BorderLayout());
 
-        JLabel topLabel = new JLabel("你好远程过程调用框架基础定义包 " + getVersion());
+        JLabel topLabel = new JLabel("你好远程过程调用框架日志定义包 " + getVersion());
         topLabel.setFont(new java.awt.Font("宋体", 1, 18));
         topLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 204, 204)));
 
@@ -81,7 +81,7 @@ public class HelloRPCBaseMain {
 //        JScrollPane mainScrollPane = new JScrollPane();
 //        mainScrollPane.setViewportView(changeLogArea);
         mainFrame.add(topLabel, java.awt.BorderLayout.NORTH);
-        mainFrame.add(new HelloRPCBaseChangeLogPanel(HelloRPCBaseMain.class), java.awt.BorderLayout.CENTER);
+        mainFrame.add(new HelloRPCLoggerChangeLogPanel(HelloRPCLoggerMain.class), java.awt.BorderLayout.CENTER);
         mainFrame.add(bottomLabel, java.awt.BorderLayout.SOUTH);
 
         mainFrame.setAlwaysOnTop(true);

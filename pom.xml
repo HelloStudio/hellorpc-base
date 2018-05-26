@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.georgeinfo.hellorpc</groupId>
-    <artifactId>hellorcp-base</artifactId>
+    <artifactId>hellorcp-logger</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -82,7 +82,7 @@
                                 <Main-Version>${version}</Main-Version>
                             </manifestEntries>
                             <manifest>
-                                <mainClass>mainentry.HelloRPCBaseMain</mainClass>
+                                <mainClass>mainentry.HelloRPCLoggerMain</mainClass>
                                 <addClasspath>true</addClasspath>
                                 <classpathPrefix>lib/</classpathPrefix>
                             </manifest>
